@@ -15,6 +15,7 @@ const makeSut = (url: string = 'any_url'): SutTypes => {
     httpPostClientSpy
   }
 }
+
 describe('RemoteAuthentication', () => {
   test('should call HttpPostClient with correct URL', async () => {
     const url = 'any_url'
