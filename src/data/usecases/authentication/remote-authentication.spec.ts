@@ -14,7 +14,7 @@ type SutTypes = {
 
 const makeSut = (url: string = faker.internet.url()): SutTypes => {
   const httpPostClientSpy = new HttpPostClientSpy<AuthenticationParams, AccountModel>()
-  const sut = new RemoteAuthentication(url, httpPostClientSpy)
+  const sut = new RemoteAuthentication(url, httpPostClientSpy) // sut = system under test, nomenclatura para identificar o objeto que está sendo testado
 
   return {
     sut,
@@ -43,7 +43,7 @@ describe('RemoteAuthentication', () => {
       statusCode: HttpStatusCode.unauthorized
     }
     const promise = sut.auth(mockAuthentication())
-    await expect(promise).rejects.toThrow(new InvalidCredentialsError())
+    await expect(promise).rejects.toThrow(new InvalidCredentialsError()) // Use .toThrow para testar que uma função é capaz de lançar erros quando é chamada
   })
 
   test('Should throw UnexpectedError if HttpPostClient returns 400', async () => {

@@ -3,7 +3,7 @@
 <br>
 
 <p align="center">
-  <img  src="./assets/clean-react.png" width="500px">
+  <img  src="./assets/clean-react.png" width="700px">
 </p>
 
 <br>
@@ -17,6 +17,7 @@
 Cria apenas interfaces para serem implementadas. O ideal é que o domain não depende de nada.
 
 Ex.: Criou a interface Authentication com o método auth que recebe um email e uma password, retornando um accessToken.
+
 <br>
 
 - #### DATA: onde fica as implementações dos casos de uso do domain.
@@ -24,6 +25,7 @@ Ex.: Criou a interface Authentication com o método auth que recebe um email e u
 Implementa as interfaces do domain.
 
 Ex.: a classe RemoteAuthentication implementou a interface Authentication tratando a resposta da API e os seus erros. Também recebe a interface httpPostClient para fazer a requisição post.
+
 <br>
 
 - #### INFRA: onde fica as implementações que normalmente usam frameworks externos
