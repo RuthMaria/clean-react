@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import { Login } from '@/presentation/pages'
-import { ValidationStub } from '@/presentation/test'
-import { AuthenticationSpy } from '@/presentation/pages/login/login.spec'
+import { AuthenticationSpy, ValidationStub } from '@/presentation/test'
 
 const Router: React.FC = () => {
   const validationSpy = new ValidationStub()
