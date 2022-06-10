@@ -46,7 +46,7 @@ Ex.: a classe RemoteAuthentication implementou a interface Authentication tratan
 
 <br>
 
-- #### INFRA: onde fica as implementações dos métodos que são chamados no usecases do DATA, normalmente usam frameworks externos.
+- #### INFRA: onde fica as implementações dos métodos que são chamados no usecases do DATA, normalmente usam libs/frameworks externos.
 
 <br>
 
