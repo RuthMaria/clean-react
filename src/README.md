@@ -12,27 +12,52 @@
 
 <br>
 
-- #### DOMAIN: onde fica as regras de negócios da aplicação.
+- #### DOMAIN: Descreve o que o projeto faz, onde fica as regras de negócios da aplicação.
 
-Cria apenas interfaces para serem implementadas. O ideal é que o domain não depende de nada.
+<br>
 
-Ex.: Criou a interface Authentication com o método auth que recebe um email e uma password, retornando um accessToken.
+Estruturas de pastas
+
+- DOMAIN
+  - errors => as mensagens de errors da aplicação
+  - models => um objeto relacionado ao problema, são os types
+  - test => dados mockados (NÃO TEM)
+  - usecases => cria apenas interfaces para serem implementadas.
+
+O ideal é que o domain não dependa de nada.
+
+Ex.: Criou a interface Authentication com o método auth que recebe um email e um password, retornando um accessToken.
 
 <br>
 
 - #### DATA: onde fica as implementações dos casos de uso do domain.
 
-Implementa as interfaces do domain.
+<br>
+
+Estruturas de pastas
+
+- DATA
+  - models
+  - protocols => tudo relacionado ao http: tipagens de resposta, código de respostas, interfaces, etc.
+  - test => dados mockados (NÃO TEM)
+  - usecases => Implementa as interfaces do usecases do domain.
 
 Ex.: a classe RemoteAuthentication implementou a interface Authentication tratando a resposta da API e os seus erros. Também recebe a interface httpPostClient para fazer a requisição post.
 
 <br>
 
-- #### INFRA: onde fica as implementações que normalmente usam frameworks externos
+- #### INFRA: onde fica as implementações dos métodos que são chamados no usecases do DATA, normalmente usam frameworks externos.
 
-Faz a comunicação com a API
+<br>
+
+Estruturas de pastas
+
+- INFRA
+  - http => faz requisições a API, é a implementação de fato do método chamado no usecases do DATA.
+  - test => dados mockados(NÃO TEM)
 
 Ex.: a classe AxiosHttpClient implementa a interface HttpPostClient, usando o axios para fazer a requisição post.
+O método post dessa classe é chamado no usecases do DATA através do HttpPostClient.
 
 <br>
 
@@ -40,15 +65,33 @@ Ex.: a classe AxiosHttpClient implementa a interface HttpPostClient, usando o ax
 
 Faz a renderização da view, controle de estado, navegação e gravar dados no cache
 
+<br>
+
+Estruturas de pastas
+
+- PRESENTATION
+  - components => os componentes gerais usadas em várias páginas
+  - hooks
+  - pages => paginas da aplicação
+  - protocols =>
+  - styles => estilos globais
+
 Ex.: o componente Login depende apenas das interfaces authentication e validation
 
 <br>
 
-- #### VALIDATION: faz as validações do formulário
+- #### VALIDATION: faz as validações do sistema
 
-Faz a validação da senha e do email
+<br>
 
-Ex.: requiredFieldValidation e emailFieldValidation
+Estruturas de pastas
+
+- VALIDATION
+  - errors =>
+  - protocols =>
+  - validators =>
+
+Ex.: requiredFieldValidation e emailFieldValidation faz a validação da senha e do email do formulário.
 
 <br>
 

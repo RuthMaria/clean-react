@@ -4,6 +4,7 @@ import { Authentication } from '@/domain/usecases'
 import Context from '@/presentation/contexts/form/form-context'
 import { Validation } from '@/presentation/protocols/validation'
 import { FormStatus, LoginHeader, Footer, Input } from '@/presentation/components'
+import { Link, useNavigate } from 'react-router-dom'
 
 type Props = {
   validation: Validation
@@ -11,6 +12,7 @@ type Props = {
 }
 
 const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
+  const navigate = useNavigate()
   const [state, setState] = useState({
     email: '',
     password: '',
@@ -45,6 +47,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
       })
 
       localStorage.setItem('accessToken', account.accessToken)
+      navigate('/path', { replace: true })
     } catch (error) {
       setState({
         ...state,
@@ -63,7 +66,7 @@ const Login: React.FC<Props> = ({ validation, authentication }: Props) => {
           <Input type="email" name="email" placeholder="Digite seu e-mail" />
           <Input type="password" name="password" placeholder="Digite sua senha" />
           <button data-testid="submit" disabled={!!state.emailError || !!state.passwordError} className={Styles.submit} type="submit">Entrar</button>
-          <span className={Styles.link}>Criar conta</span>
+          <Link data-testid="signup" to="/signup" className={Styles.link}>Criar conta</Link>
           <FormStatus />
         </form>
       </Context.Provider>
