@@ -1,4 +1,4 @@
-import { InvalidFieldError } from '@/validation/error'
+import { InvalidFieldError } from '@/validation/errors'
 import { FieldValidation } from '@/validation/protocols/field-validation'
 
 export class EmailValidation implements FieldValidation {
