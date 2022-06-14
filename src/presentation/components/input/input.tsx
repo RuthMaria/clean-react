@@ -1,30 +1,34 @@
-import React, { useContext } from 'react'
-import Styles from './input-styles.scss'
-import Context from '@/presentation/contexts/form/form-context'
+import React, { useContext } from "react";
+import Styles from "./input-styles.scss";
+import Context from "@/presentation/contexts/form/form-context";
 
-type Props = React.DetailedHTMLProps<React.InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+type Props = React.DetailedHTMLProps<
+  React.InputHTMLAttributes<HTMLInputElement>,
+  HTMLInputElement
+>;
 
 const Input: React.FC<Props> = (props: Props) => {
-  const { state, setState } = useContext(Context)
-  const error = state[`${props.name}Error`]
+  const { state, setState } = useContext(Context);
+  const error = state[`${props.name}Error`];
 
   const getStatus = (): string => {
-    return error ? '🔴' : '🟢'
-  }
+    return error ? "🔴" : "🟢";
+  };
 
   const getTitle = (): string => {
-    return error || 'Tudo certo!'
-  }
+    return error || "Tudo certo!";
+  };
 
   const enableInput = (event: React.FocusEvent<HTMLInputElement>): void => {
-    event.target.readOnly = false
-  }
+    event.target.readOnly = false;
+  };
+
   const handleChange = (event: React.FocusEvent<HTMLInputElement>): void => {
     setState({
       ...state,
-      [event.target.name]: event.target.value
-    })
-  }
+      [event.target.name]: event.target.value,
+    });
+  };
 
   return (
     <div className={Styles.inputWrap}>
@@ -40,13 +44,13 @@ const Input: React.FC<Props> = (props: Props) => {
         title={getTitle()}
         className={Styles.status}
       >
-        { getStatus() }
+        {getStatus()}
       </span>
     </div>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
 
 /*
 readOnly => faz com que o input seja de somente leitura, não podendo ser alterado/digitado
